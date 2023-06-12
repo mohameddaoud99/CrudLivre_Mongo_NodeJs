@@ -1,0 +1,19 @@
+version: "3"
+services:
+  weeb:
+    restart: always
+    build: .
+    ports:
+      - 80:3001
+    volumes:
+      - ./:/code
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+  mongodb:
